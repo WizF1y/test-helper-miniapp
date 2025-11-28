@@ -1,0 +1,39 @@
+<view class="progress-card" bindtap="onCardTap">
+  <!-- 月份标题 -->
+  <view class="card-header">
+    <text class="month-label">{{month}}月进度</text>
+  </view>
+  
+  <!-- 进度环形图 -->
+  <view class="progress-circle">
+    <view class="circle-bg">
+      <view class="circle-progress" style="background: conic-gradient(#3A7FED {{progressPercent}}%, #f0f0f0 {{progressPercent}}%);">
+        <view class="circle-inner">
+          <text class="percent-text">{{progressPercent}}%</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 统计信息 -->
+  <view class="stats-container">
+    <view class="stat-item">
+      <text class="stat-label">已完成</text>
+      <text class="stat-value">{{completedTopics}}/{{totalTopics}}</text>
+    </view>
+    
+    <view class="stat-divider"></view>
+    
+    <view class="stat-item">
+      <text class="stat-label">正确率</text>
+      <text class="stat-value">{{correctRate}}%</text>
+    </view>
+    
+    <view class="stat-divider"></view>
+    
+    <view class="stat-item">
+      <text class="stat-label">学习时长</text>
+      <text class="stat-value">{{formattedTime}}</text>
+    </view>
+  </view>
+</view>

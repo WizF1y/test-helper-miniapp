@@ -1,0 +1,84 @@
+<view class="container">
+  <!-- 登录提示区域 -->
+  <view class="login-prompt" wx:if="{{!hasLogin}}">
+    <view class="login-content">
+      <image src="/assets/icons/profile.png" class="login-icon"></image>
+      <text class="login-text">请登录后使用完整功能</text>
+      <button class="login-btn" bindtap="onLogin">点击登录</button>
+    </view>
+  </view>
+
+  <!-- 返回顶部按钮 -->
+  <!-- <view class="back-to-top" hidden="{{!showBackTop}}" bindtap="scrollToTop">
+    <image src="/assets/icons/top.png" mode="aspectFit"></image>
+  </view> -->
+
+  <!-- 顶部轮播图 -->
+  <swiper class="banner" 
+          indicator-dots="{{true}}" 
+          autoplay="{{true}}" 
+          interval="{{3000}}" 
+          duration="{{500}}"
+          circular="{{true}}"
+          indicator-color="rgba(255, 255, 255, .5)"
+          indicator-active-color="#fff">
+    <block wx:for="{{bannerList}}" wx:key="id">
+      <swiper-item>
+        <image src="{{item.imageUrl}}" class="banner-image" mode="aspectFill" lazy-load="{{true}}" data-id="{{item.id}}" bindtap="onBannerTap"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 功能入口区域 -->
+  <view class="entry-section card" wx:if="{{hasLogin}}">
+    <view class="section-title">快速开始</view>
+    <view class="grid-container">
+      <view class="grid-item" bindtap="navigateToRandomPractice">
+        <image src="/assets/icons/exam.png" mode="aspectFit"></image>
+        <text>随机练习</text>
+      </view>
+      <view class="grid-item" bindtap="navigateToMistakes">
+        <image src="/assets/icons/mistake.png" mode="aspectFit"></image>
+        <text>我的错题</text>
+      </view>
+      <view class="grid-item" bindtap="navigateToFavorites">
+        <image src="/assets/icons/favorite.png" mode="aspectFit"></image>
+        <text>收藏题目</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 月份题库 -->
+  <view class="topic-section card" wx:if="{{hasLogin}}">
+    <view class="section-title">最近更新</view>
+    <view class="month-list">
+      <view class="month-item" 
+            wx:for="{{monthlyTopics}}" 
+            wx:key="month" 
+            data-type="month" 
+            data-value="{{item.month}}" 
+            bindtap="navigateToTopicList">
+        <text class="month-label">{{item.month}}月</text>
+        <view class="progress-container">
+          <text class="progress-text">已完成{{item.completedCount}}题</text>
+          <text class="progress-text">未完成{{item.uncompletedCount}}题</text>
+        </view>
+        <view class="update-tag" wx:if="{{item.isNew}}">新</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 添加随机模式入口 -->
+  <!-- <view class="topic-section card">
+    <view class="section-title">自定义考试</view>
+    <view class="mode-list">
+      <view class="mode-item"
+            wx:for="{{modeTypes}}"
+            wx:key="mode"
+            data-type="mode"
+            data-value="{{item.mode}}"
+            bindtap="navigateToMode">
+      <view>
+    <view>
+  </view> -->
+</view>

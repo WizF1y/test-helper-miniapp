@@ -1,0 +1,94 @@
+.progress-card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+/* 卡片头部 */
+.card-header {
+  margin-bottom: 30rpx;
+}
+
+.month-label {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 进度环形图 */
+.progress-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.circle-bg {
+  width: 200rpx;
+  height: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-progress {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.circle-inner {
+  width: 160rpx;
+  height: 160rpx;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.percent-text {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #3A7FED;
+}
+
+/* 统计信息 */
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 20rpx;
+  border-top: 2rpx solid #f0f0f0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 8rpx;
+}
+
+.stat-value {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.stat-divider {
+  width: 2rpx;
+  height: 40rpx;
+  background: #f0f0f0;
+}

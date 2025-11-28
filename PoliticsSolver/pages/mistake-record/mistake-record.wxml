@@ -1,0 +1,117 @@
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="title">我的错题</text>
+    <text class="count">共{{statistics.totalCount}}题</text>
+  </view>
+  
+  <!-- 统计信息卡片 -->
+  <view class="statistics-card" wx:if="{{statistics.totalCount > 0}}">
+    <view class="stat-section">
+      <text class="stat-label">按题型分布</text>
+      <view class="stat-items">
+        <view class="stat-item" wx:for="{{[1, 2, 3]}}" wx:key="*this">
+          <text class="stat-type">{{typeLabels[item]}}</text>
+          <text class="stat-value">{{statistics.byType[item] || 0}}题</text>
+        </view>
+      </view>
+    </view>
+    <view class="stat-section" wx:if="{{monthKeys.length > 0}}">
+      <text class="stat-label">按月份分布</text>
+      <view class="stat-items month-items">
+        <view class="stat-item" wx:for="{{monthKeys}}" wx:key="*this">
+          <text class="stat-type">{{item}}月</text>
+          <text class="stat-value">{{statistics.byMonth[item]}}题</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 筛选按钮 -->
+  <view class="filter-bar" wx:if="{{statistics.totalCount > 0}}">
+    <button class="filter-btn" bindtap="showFilter">
+      <text>筛选</text>
+      <text class="filter-badge" wx:if="{{filterMonth || filterType}}">●</text>
+    </button>
+    <text class="filter-info" wx:if="{{filterMonth || filterType}}">
+      <text wx:if="{{filterMonth}}">{{filterMonth}}月</text>
+      <text wx:if="{{filterMonth && filterType}}"> · </text>
+      <text wx:if="{{filterType}}">{{typeLabels[filterType]}}</text>
+    </text>
+  </view>
+  
+  <!-- 错题列表 -->
+  <view class="mistake-list">
+    <block wx:if="{{mistakeList.length > 0}}">
+      <view wx:for="{{mistakeList}}" wx:key="id" class="mistake-item">
+        <topic-card 
+          topic="{{item}}" 
+          index="{{index}}" 
+          showActions="{{true}}" 
+          listType="mistake"
+          hasNext="{{index < mistakeList.length-1}}"
+          bind:select="onTopicSelect"
+          bind:favorite="onTopicFavorite"
+          bind:next="onNextTopic"
+          bind:removeMistake="onRemoveMistake"
+          bind:correct="onTopicCorrect"
+          data-index="{{index}}">
+        </topic-card>
+      </view>
+    </block>
+    <empty 
+      wx:else 
+      text="暂无错题记录" 
+      btnText="去做题" 
+      bind:action="navigateToIndex">
+    </empty>
+  </view>
+  
+
+  <!-- 筛选弹窗 -->
+  <view class="modal" wx:if="{{showFilterModal}}">
+    <view class="modal-mask" bindtap="cancelFilter"></view>
+    <view class="modal-content filter-modal">
+      <view class="modal-title">筛选错题</view>
+      
+      <view class="filter-section">
+        <text class="filter-section-title">按月份</text>
+        <view class="filter-options">
+          <view class="filter-option {{filterMonth === item ? 'active' : ''}}" 
+                wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12]}}" 
+                wx:key="*this"
+                data-month="{{item}}"
+                bindtap="selectFilterMonth">
+            {{item}}月
+          </view>
+        </view>
+      </view>
+      
+      <view class="filter-section">
+        <text class="filter-section-title">按题型</text>
+        <view class="filter-options">
+          <view class="filter-option {{filterType === 1 ? 'active' : ''}}" 
+                data-type="{{1}}"
+                bindtap="selectFilterType">
+            单选题
+          </view>
+          <view class="filter-option {{filterType === 2 ? 'active' : ''}}" 
+                data-type="{{2}}"
+                bindtap="selectFilterType">
+            多选题
+          </view>
+          <view class="filter-option {{filterType === 3 ? 'active' : ''}}" 
+                data-type="{{3}}"
+                bindtap="selectFilterType">
+            判断题
+          </view>
+        </view>
+      </view>
+      
+      <view class="modal-buttons">
+        <button class="modal-cancel" bindtap="resetFilter">重置</button>
+        <button class="modal-confirm" bindtap="applyFilter">应用</button>
+      </view>
+    </view>
+  </view>
+</view>

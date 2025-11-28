@@ -1,0 +1,104 @@
+<view class="container">
+  <!-- 顶部状态栏 -->
+  <view class="exam-header">
+    <view class="progress-info">
+      <progress percent="{{(currentIndex+1)/totalQuestions*100}}" stroke-width="4" activeColor="#3A7FED" backgroundColor="#eee"></progress>
+      <text class="progress-text">{{currentIndex+1}}/{{totalQuestions}}</text>
+    </view>
+    <view class="time-info">
+      <countdown id="countdown" seconds="{{examTime}}" warningSeconds="{{300}}" bind:finish="onTimeFinish"></countdown>
+    </view>
+  </view>
+  
+  <!-- 题目内容 -->
+  <view class="exam-content">
+    <swiper class="topic-swiper" 
+            current="{{currentIndex}}" 
+            bindchange="onSwiperChange" 
+            duration="300"
+            circular="{{false}}"
+            style="height: {{swiperHeight}}px">
+      <swiper-item wx:for="{{questions}}" wx:key="id">
+        <topic-card 
+          id="topic-card-{{index}}"
+          topic="{{item}}" 
+          index="{{index}}" 
+          showActions="{{true}}" 
+          hasNext="{{index < totalQuestions-1}}"
+          bind:select="onTopicSelect"
+          bind:favorite="onTopicFavorite"
+          bind:next="onNextTopic">
+        </topic-card>
+      </swiper-item>
+    </swiper>
+  </view>
+  
+  <!-- 底部按钮 -->
+  <view class="exam-footer">
+    <view class="btn-group">
+      <button class="footer-btn" bindtap="onPrevTopic" disabled="{{currentIndex === 0}}">上一题</button>
+      <button class="footer-btn" bindtap="onNextTopic" disabled="{{currentIndex === totalQuestions-1}}">下一题</button>
+    </view>
+    <button class="submit-btn" bindtap="submitExam">提交试卷</button>
+  </view>
+  
+  <!-- 提交确认弹窗 -->
+  <view class="modal" wx:if="{{showSubmitModal}}">
+    <view class="modal-mask" bindtap="cancelSubmit"></view>
+    <view class="modal-content">
+      <view class="modal-title">确认提交</view>
+      <view class="modal-message">
+        <text>总题数: {{totalQuestions}}题</text>
+        <text>已答题: {{answeredCount}}题</text>
+        <text>未答题: {{totalQuestions - answeredCount}}题</text>
+      </view>
+      <view class="modal-buttons">
+        <button class="modal-cancel" bindtap="cancelSubmit">继续答题</button>
+        <button class="modal-confirm" bindtap="confirmSubmit">确认提交</button>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 结果页面 -->
+  <view class="result-page" wx:if="{{showResult}}">
+    <view class="result-card">
+      <view class="result-header">
+        <text class="result-title">考试结果</text>
+      </view>
+      <view class="result-score">
+        <text class="score-value">{{score}}</text>
+        <text class="score-total">/100</text>
+      </view>
+      <view class="result-summary">
+        <text class="summary-text">{{correctCount > wrongCount ? '恭喜你，考试通过！' : '继续努力，加油！'}}</text>
+        <text class="summary-accuracy">正确率：{{accuracy}}%</text>
+      </view>
+      <view class="result-detail">
+        <view class="result-item">
+          <text class="result-label">总题数</text>
+          <text class="result-value">{{totalQuestions}}题</text>
+        </view>
+        <view class="result-item correct">
+          <text class="result-label">答对题目</text>
+          <text class="result-value">{{correctCount}}题</text>
+        </view>
+        <view class="result-item wrong">
+          <text class="result-label">答错题目</text>
+          <text class="result-value">{{wrongCount}}题</text>
+        </view>
+        <view class="result-item">
+          <text class="result-label">未答题目</text>
+          <text class="result-value">{{totalQuestions - answeredCount}}题</text>
+        </view>
+        <view class="result-item">
+          <text class="result-label">用时</text>
+          <text class="result-value">{{usedTimeText}}</text>
+        </view>
+      </view>
+      <view class="result-buttons">
+        <button class="result-btn btn-review" bindtap="reviewExam">查看解析</button>
+        <button class="result-btn btn-return" bindtap="returnToHome">返回首页</button>
+      </view>
+    </view>
+  </view>
+</view> 

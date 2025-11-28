@@ -1,0 +1,153 @@
+/**app.wxss**/
+@import "/styles/common.wxss";
+
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', STHeiti, 'Microsoft Yahei', Tahoma, Simsun, sans-serif;
+  background-color: #f5f7fa;
+  box-sizing: border-box;
+  -webkit-text-size-adjust: none;
+  color: #333;
+}
+
+.container {
+  padding: 30rpx;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+button {
+  padding: 0;
+  font-weight: normal;
+  box-sizing: border-box;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+button::after {
+  border: none;
+  outline: none;
+}
+
+/* 禁用按钮 */
+button[disabled] {
+  background-color: #f0f0f0 !important;
+  color: #ccc !important;
+}
+
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+/* 全局样式定义 */
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 
+                'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f6f6f6;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 布局类 */
+.container {
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 按钮样式 */
+.btn-primary {
+  background-color: #3A7FED;
+  color: #fff;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  padding: 16rpx 30rpx;
+}
+
+.btn-secondary {
+  background-color: #fff;
+  color: #3A7FED;
+  border: 1rpx solid #3A7FED;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  padding: 16rpx 30rpx;
+}
+
+/* 文本样式 */
+.text-primary {
+  color: #3A7FED;
+}
+
+.text-success {
+  color: #52c41a;
+}
+
+.text-warning {
+  color: #faad14;
+}
+
+.text-danger {
+  color: #f5222d;
+}
+
+.text-gray {
+  color: #999;
+}
+
+.text-small {
+  font-size: 24rpx;
+}
+
+.text-medium {
+  font-size: 28rpx;
+}
+
+.text-large {
+  font-size: 32rpx;
+}
+
+/* 边距工具类 */
+.mt-10 { margin-top: 10rpx; }
+.mt-20 { margin-top: 20rpx; }
+.mt-30 { margin-top: 30rpx; }
+.mb-10 { margin-bottom: 10rpx; }
+.mb-20 { margin-bottom: 20rpx; }
+.mb-30 { margin-bottom: 30rpx; }
+.ml-10 { margin-left: 10rpx; }
+.mr-10 { margin-right: 10rpx; }
+.p-20 { padding: 20rpx; } 

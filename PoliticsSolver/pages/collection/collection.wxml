@@ -1,0 +1,53 @@
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="title">我的收藏</text>
+    <text class="count">共{{favoriteList.length}}题</text>
+  </view>
+  
+  <!-- 收藏列表 -->
+  <view class="favorite-list">
+    <block wx:if="{{favoriteList.length > 0}}">
+      <view wx:for="{{favoriteList}}" wx:key="id" class="favorite-item">
+        <topic-card 
+          topic="{{item}}" 
+          index="{{index}}" 
+          showActions="{{true}}" 
+          listType="favorite"
+          hasNext="{{index < favoriteList.length-1}}"
+          bind:select="onTopicSelect"
+          bind:favorite="onTopicFavorite"
+          bind:next="onNextTopic"
+          bind:removeFavortie="onRemoveFavorite"
+          data-index="{{index}}">
+        </topic-card>
+      </view>
+    </block>
+    <empty 
+      wx:else 
+      text="暂无收藏题目" 
+      btnText="去做题" 
+      bind:action="navigateToIndex">
+    </empty>
+  </view>
+  
+  <!-- 清空收藏按钮 -->
+  <view class="clear-btn-container" wx:if="{{favoriteList.length > 0}}">
+    <button class="clear-btn" bindtap="showClearConfirm">清空收藏</button>
+  </view>
+  
+  <!-- 清空确认弹窗 -->
+  <view class="modal" wx:if="{{showClearModal}}">
+    <view class="modal-mask" bindtap="cancelClear"></view>
+    <view class="modal-content">
+      <view class="modal-title">确认清空</view>
+      <view class="modal-message">
+        <text>确定要清空所有收藏题目吗？此操作无法撤销。</text>
+      </view>
+      <view class="modal-buttons">
+        <button class="modal-cancel" bindtap="cancelClear">取消</button>
+        <button class="modal-confirm" bindtap="confirmClear">确认清空</button>
+      </view>
+    </view>
+  </view>
+</view>

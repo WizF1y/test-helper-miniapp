@@ -1,0 +1,75 @@
+<!-- pages/random-practice/random-practice.wxml -->
+<view class="container">
+  <!-- 加载中 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载题目中...</text>
+  </view>
+
+  <!-- 结果页面 -->
+  <view class="result-container" wx:if="{{showResult}}">
+    <view class="result-header">
+      <text class="result-title">练习完成！</text>
+    </view>
+    
+    <view class="result-stats">
+      <view class="stat-item">
+        <text class="stat-label">总题数</text>
+        <text class="stat-value">{{questions.length}}</text>
+      </view>
+      <view class="stat-item correct">
+        <text class="stat-label">正确</text>
+        <text class="stat-value">{{correctCount}}</text>
+      </view>
+      <view class="stat-item wrong">
+        <text class="stat-label">错误</text>
+        <text class="stat-value">{{wrongCount}}</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-label">正确率</text>
+        <text class="stat-value">{{accuracy}}%</text>
+      </view>
+    </view>
+
+    <view class="result-actions">
+      <button class="action-btn primary" bindtap="retryPractice">再来一次</button>
+      <button class="action-btn" bindtap="backToHome">返回首页</button>
+    </view>
+  </view>
+
+  <!-- 答题页面 -->
+  <view class="practice-container" wx:if="{{!loading && !showResult}}">
+    <!-- 进度条 -->
+    <view class="progress-bar">
+      <view class="progress-info">
+        <text>第 {{currentIndex + 1}} / {{questions.length}} 题</text>
+        <text wx:if="{{questions[currentIndex] && questions[currentIndex].month}}">{{questions[currentIndex].month}}月</text>
+      </view>
+      <view class="progress-track">
+        <view class="progress-fill" style="width: {{(currentIndex + 1) / questions.length * 100}}%"></view>
+      </view>
+    </view>
+
+    <!-- 题目卡片 -->
+    <view class="topic-wrapper" wx:if="{{questions[currentIndex]}}">
+      <topic-card 
+        topic="{{questions[currentIndex]}}"
+        index="{{currentIndex}}"
+        hasNext="{{currentIndex < questions.length - 1}}"
+        showActions="{{true}}"
+        listType="normal"
+        bind:select="onSelectOption"
+        bind:next="onNextTopic"
+      />
+    </view>
+
+    <!-- 下一题按钮 -->
+    <view class="bottom-actions">
+      <button class="next-btn" bindtap="onNextTopic" wx:if="{{currentIndex < questions.length - 1}}">
+        下一题
+      </button>
+      <button class="finish-btn" bindtap="showResults" wx:else>
+        完成练习
+      </button>
+    </view>
+  </view>
+</view>

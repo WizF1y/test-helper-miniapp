@@ -1,0 +1,249 @@
+/* 引入公共样式 */
+@import "/styles/common.wxss";
+
+/* 头部样式 */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  margin-bottom: 20rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.count {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 错题列表 */
+.mistake-list {
+  margin-bottom: 100rpx;
+}
+
+/* 清空按钮 */
+.clear-btn-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx;
+  background-color: #fff;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.clear-btn {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  background-color: #ff4d4f;
+  color: #fff;
+}
+
+/* 确认弹窗 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  position: relative;
+  width: 560rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 40rpx 30rpx;
+  z-index: 1001;
+}
+
+.modal-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.modal-message {
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-cancel, .modal-confirm {
+  width: 240rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+}
+
+.modal-cancel {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.modal-confirm {
+  background-color: #ff4d4f;
+  color: #fff;
+}
+
+/* 统计信息卡片 */
+.statistics-card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.stat-section {
+  margin-bottom: 30rpx;
+}
+
+.stat-section:last-child {
+  margin-bottom: 0;
+}
+
+.stat-label {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.stat-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.stat-item {
+  flex: 1;
+  min-width: 150rpx;
+  background-color: #f5f5f5;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.month-items .stat-item {
+  flex: 0 0 auto;
+  min-width: 100rpx;
+}
+
+.stat-type {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.stat-value {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1890ff;
+}
+
+/* 筛选栏 */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  margin-bottom: 20rpx;
+}
+
+.filter-btn {
+  position: relative;
+  padding: 10rpx 30rpx;
+  background-color: #fff;
+  border: 2rpx solid #d9d9d9;
+  border-radius: 20rpx;
+  font-size: 26rpx;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.filter-badge {
+  color: #1890ff;
+  font-size: 20rpx;
+}
+
+.filter-info {
+  margin-left: 20rpx;
+  font-size: 24rpx;
+  color: #1890ff;
+}
+
+/* 筛选弹窗 */
+.filter-modal {
+  width: 600rpx;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.filter-section {
+  margin-bottom: 30rpx;
+}
+
+.filter-section-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+}
+
+.filter-option {
+  padding: 15rpx 30rpx;
+  background-color: #f5f5f5;
+  border-radius: 20rpx;
+  font-size: 26rpx;
+  color: #666;
+  border: 2rpx solid transparent;
+}
+
+.filter-option.active {
+  background-color: #e6f7ff;
+  color: #1890ff;
+  border-color: #1890ff;
+} 

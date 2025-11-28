@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "题目列表",
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "topic-card": "/components/topic-card/topic-card",
+    "empty": "/components/empty/empty"
+  }
+} 

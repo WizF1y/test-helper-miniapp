@@ -1,0 +1,7 @@
+<view class="empty-container" style="margin-top: {{marginTop}}rpx">
+  <image class="empty-image" src="{{image || '/assets/icons/empty.png'}}" mode="aspectFit"></image>
+  <text class="empty-text">{{text || '暂无数据'}}</text>
+  <view class="empty-action" wx:if="{{btnText}}">
+    <button class="empty-btn" bindtap="onActionTap">{{btnText}}</button>
+  </view>
+</view> 

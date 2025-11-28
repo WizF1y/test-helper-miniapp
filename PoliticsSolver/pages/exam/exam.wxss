@@ -1,0 +1,285 @@
+/* 引入公共样式 */
+@import "/styles/common.wxss";
+
+/* 顶部状态栏 */
+.exam-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: #fff;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.progress-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+progress {
+  flex: 1;
+}
+
+.progress-text {
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 题目内容 */
+.exam-content {
+  margin-top: 160rpx;
+  margin-bottom: 140rpx;
+}
+
+.topic-swiper {
+  width: 100%;
+}
+
+/* 底部按钮 */
+.exam-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 20rpx;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.footer-btn {
+  width: 48%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.footer-btn[disabled] {
+  color: #999;
+  background-color: #f0f0f0;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  background-color: #3A7FED;
+  color: #fff;
+}
+
+/* 提交确认弹窗 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  position: relative;
+  width: 560rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 40rpx 30rpx;
+  z-index: 1001;
+}
+
+.modal-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.modal-message {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40rpx;
+}
+
+.modal-message text {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-cancel, .modal-confirm {
+  width: 240rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+}
+
+.modal-cancel {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.modal-confirm {
+  background-color: #3A7FED;
+  color: #fff;
+}
+
+/* 结果页面 */
+.result-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-card {
+  width: 680rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 40rpx;
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.result-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.result-score {
+  text-align: center;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.score-value {
+  font-size: 72rpx;
+  font-weight: bold;
+  color: #3A7FED;
+}
+
+.score-total {
+  font-size: 32rpx;
+  color: #666;
+  margin-left: 8rpx;
+}
+
+.result-summary {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.summary-text {
+  display: block;
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.summary-accuracy {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.result-detail {
+  margin-bottom: 40rpx;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+  padding: 10rpx 0;
+}
+
+.result-item.correct .result-value {
+  color: #52c41a;
+}
+
+.result-item.wrong .result-value {
+  color: #ff4d4f;
+}
+
+.result-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.result-value {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.result-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.result-btn {
+  width: 48%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+}
+
+.btn-review {
+  background-color: #fff;
+  color: #3A7FED;
+  border: 1rpx solid #3A7FED;
+}
+
+.btn-return {
+  background-color: #3A7FED;
+  color: #fff;
+} 

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "随机练习",
+  "usingComponents": {
+    "topic-card": "/components/topic-card/topic-card"
+  }
+}

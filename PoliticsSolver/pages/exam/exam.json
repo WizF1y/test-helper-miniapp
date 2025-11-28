@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "随机考试",
+  "usingComponents": {
+    "topic-card": "/components/topic-card/topic-card",
+    "countdown": "/components/countdown/countdown"
+  }
+} 

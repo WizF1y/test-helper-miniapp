@@ -1,0 +1,290 @@
+/* 引入公共样式 */
+@import "/styles/common.wxss";
+
+/* 用户信息卡片 */
+.user-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 30rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+/* 卡片点击效果 */
+.card-hover {
+  background-color: #f8f8f8;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.nickname {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.signature {
+  font-size: 26rpx;
+  color: #999;
+}
+
+/* 未登录状态右侧箭头图标 */
+.login-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.login-icon image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 隐藏的登录按钮 */
+.hidden-login-btn {
+  position: fixed;
+  top: -999rpx;
+  left: -999rpx;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+}
+
+/* 修改授权登录按钮样式 */
+.auth-btn {
+  width: 180rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background-color: #3A7FED;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 35rpx;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.auth-btn::after {
+  border: none;
+}
+
+/* 统计卡片 */
+.stats-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+}
+
+.stats-num {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #3A7FED;
+  margin-bottom: 6rpx;
+}
+
+.stats-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 菜单列表 */
+.menu-list {
+  padding: 0;
+  overflow: hidden;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 24rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item-left image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.menu-item-left text {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.arrow-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+/* 版本信息 */
+.version-info {
+  text-align: center;
+  margin-top: 50rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 打赏弹窗 */
+.donation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donation-content {
+  width: 560rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  padding: 40rpx 30rpx;
+}
+
+.donation-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.donation-desc {
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.donation-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40rpx;
+}
+
+.donation-option {
+  width: 160rpx;
+  height: 120rpx;
+  border: 2rpx solid #e6e6e6;
+  border-radius: 8rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.donation-option.active {
+  border-color: #3A7FED;
+  background-color: #f0f7ff;
+}
+
+.donation-option .amount {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.donation-option .label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.donation-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.donation-cancel, .donation-confirm {
+  width: 240rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+}
+
+.donation-cancel {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.donation-confirm {
+  background-color: #3A7FED;
+  color: #fff;
+}
+
+/* 退出登录按钮样式 */
+.logout-container {
+  margin-top: 60rpx;
+  padding: 0 30rpx;
+}
+
+.logout-btn {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  border-radius: 45rpx;
+  font-size: 32rpx;
+  color: #ff4d4f;
+  background-color: #fff;
+  border: 1rpx solid #ff4d4f;
+}
+
+.logout-btn:active {
+  background-color: rgba(255, 77, 79, 0.05);
+}
+
+/* 授权登录按钮样式 */
+.auth-login-btn {
+  position: fixed;
+  bottom: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #3A7FED;
+  color: #fff;
+  border-radius: 45rpx;
+  z-index: 999;
+  font-size: 32rpx;
+  box-shadow: 0 4rpx 12rpx rgba(58, 127, 237, 0.3);
+} 

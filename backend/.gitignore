@@ -1,0 +1,56 @@
+# 虚拟环境
+myenv/
+venv/
+env/
+
+# 环境变量文件
+.env
+
+# Python 编译文件
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker
+Dockerfile.dockerignore
+
+# Logs
+logs/
+*.log
+
+# Backups
+backups/
+*.sql
+*.backup
+*.bak
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Certificates
+*.pem
+*.key
+*.crt
+
+# Docker volumes
+mysql_data/

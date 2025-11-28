@@ -1,0 +1,128 @@
+<view class="container">
+  <!-- 用户信息卡片 -->
+  <view class="user-card" bindtap="{{!hasUserInfo ? 'triggerLogin' : ''}}" hover-class="{{!hasUserInfo ? 'card-hover' : ''}}">
+    <block wx:if="{{hasUserInfo}}">
+      <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+      <view class="user-info">
+        <text class="nickname">{{userInfo.nickname}}</text>
+        <text class="signature">继续加油，备考加油！</text>
+      </view>
+    </block>
+    <block wx:else>
+      <image class="avatar" src="/assets/icons/default-avatar.png"></image>
+      <view class="user-info">
+        <text class="nickname">请点击登录</text>
+        <text class="signature">登录后体验更多功能</text>
+      </view>
+      <view class="login-icon">
+        <image src="/assets/icons/arrow-right.png"></image>
+      </view>
+    </block>
+  </view>
+
+  <!-- 学习统计 -->
+  <view class="stats-card card">
+    <view class="stats-item">
+      <text class="stats-num">{{statistics.doneCount || 0}}</text>
+      <text class="stats-label">已做题目</text>
+    </view>
+    <view class="stats-item">
+      <text class="stats-num">{{statistics.mistakeCount || 0}}</text>
+      <text class="stats-label">错题数量</text>
+    </view>
+    <view class="stats-item">
+      <text class="stats-num">{{statistics.favoriteCount || 0}}</text>
+      <text class="stats-label">收藏题目</text>
+    </view>
+    <view class="stats-item">
+      <text class="stats-num">{{statistics.daysCount || 0}}</text>
+      <text class="stats-label">坚持天数</text>
+    </view>
+  </view>
+
+  <!-- 功能列表 -->
+  <view class="menu-list card">
+    <view class="menu-item" bindtap="navigateToMistakes">
+      <view class="menu-item-left">
+        <image src="/assets/icons/mistake.png"></image>
+        <text>我的错题</text>
+      </view>
+      <image class="arrow-icon" src="/assets/icons/arrow-right.png"></image>
+    </view>
+    
+    <view class="menu-item" bindtap="navigateToFavorites">
+      <view class="menu-item-left">
+        <image src="/assets/icons/favorite.png"></image>
+        <text>我的收藏</text>
+      </view>
+      <image class="arrow-icon" src="/assets/icons/arrow-right.png"></image>
+    </view>
+    
+    <view class="menu-item" bindtap="showDonation">
+      <view class="menu-item-left">
+        <image src="/assets/icons/donation.png"></image>
+        <text>赞助打赏</text>
+      </view>
+      <image class="arrow-icon" src="/assets/icons/arrow-right.png"></image>
+    </view>
+    
+    <view class="menu-item" bindtap="navigateToAbout">
+      <view class="menu-item-left">
+        <image src="/assets/icons/about.png"></image>
+        <text>关于我们</text>
+      </view>
+      <image class="arrow-icon" src="/assets/icons/arrow-right.png"></image>
+    </view>
+  </view>
+  
+  <!-- 版本信息 -->
+  <view class="version-info">
+    <text>当前版本: v1.0.0</text>
+  </view>
+  
+  <!-- 退出登录按钮 -->
+  <view class="logout-container" wx:if="{{hasUserInfo}}">
+    <button class="logout-btn" bindtap="logout">退出登录</button>
+  </view>
+</view>
+
+<!-- 打赏弹窗 -->
+<view class="donation-modal" wx:if="{{showDonationModal}}">
+  <view class="donation-content">
+    <view class="donation-title">感谢您的支持</view>
+    <view class="donation-desc">您的每一笔赞助都将用于内容更新和服务器维护</view>
+    
+    <view class="donation-options">
+      <view class="donation-option {{selectedDonation === 5 ? 'active' : ''}}" 
+            data-amount="5" bindtap="selectDonation">
+        <text class="amount">￥5</text>
+        <text class="label">小额支持</text>
+      </view>
+      <view class="donation-option {{selectedDonation === 10 ? 'active' : ''}}" 
+            data-amount="10" bindtap="selectDonation">
+        <text class="amount">￥10</text>
+        <text class="label">一般支持</text>
+      </view>
+      <view class="donation-option {{selectedDonation === 20 ? 'active' : ''}}" 
+            data-amount="20" bindtap="selectDonation">
+        <text class="amount">￥20</text>
+        <text class="label">大力支持</text>
+      </view>
+    </view>
+    
+    <view class="donation-buttons">
+      <button class="donation-cancel" bindtap="closeDonation">取消</button>
+      <button class="donation-confirm" bindtap="confirmDonation">确认赞助</button>
+    </view>
+  </view>
+</view>
+
+<!-- 登录按钮 - 正常隐藏，需要时显示 -->
+<button 
+  wx:if="{{showLoginBtn}}" 
+  class="auth-login-btn" 
+  open-type="getUserInfo" 
+  bindgetuserinfo="onGetUserInfo"
+>
+  点击授权登录
+</button> 

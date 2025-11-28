@@ -1,0 +1,78 @@
+<view class="topic-card">
+  <!-- 题目序号和类型 -->
+  <view class="topic-header">
+    <text class="topic-index">{{index+1}}.</text>
+    <text class="topic-type">{{typeLabels[topic.type] || '单选题'}}</text>
+  </view>
+  
+  <!-- 题目内容 -->
+  <view class="topic-content">
+    <rich-text nodes="{{topic.content}}"></rich-text>
+  </view>
+  
+  <!-- 调试信息 -->
+  <view class="debug-info" wx:if="{{__debug__}}">
+    <text>Answer: "{{topic.answer}}"</text>
+    <text>Show Answer: {{showAnswer}}</text>
+    <text>Selected Options: {{selectedOptionsStr}}</text>
+    <text>Option Status: {{optionStatusStr}}</text>
+  </view>
+  
+  <!-- 选项列表 -->
+  <view class="options-list">
+    <view class="option-item {{optionStatus[option.key] || ''}}"
+          wx:for="{{topic.options}}" 
+          wx:for-item="option"
+          wx:key="key"
+          data-key="{{option.key}}"
+          bindtap="selectOption">
+      <text class="option-key">{{option.key}}</text>
+      <view class="option-content">
+        <rich-text nodes="{{option.content}}"></rich-text>
+      </view>
+      <!-- 调试信息 -->
+      <view class="debug-info" wx:if="{{__debug__}}">
+        <text>Key: {{option.key}}</text>
+        <text>Status: {{optionStatus[option.key]}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 答案解析 -->
+  <view class="answer-analysis" wx:if="{{showAnswer}}">
+    <view class="answer-header">
+      <text class="answer-label">答案解析</text>
+      <text class="correct-answer">正确答案: {{topic.answer}}</text>
+    </view>
+    <view class="analysis-content">
+      <rich-text nodes="{{topic.analysis || '暂无解析'}}"></rich-text>
+    </view>
+  </view>
+  
+  <!-- 操作按钮 -->
+  <view class="topic-actions" wx:if="{{showActions}}">
+    <!-- 收藏按钮 - 刷题模式下 -->
+    <view class="action-btn" bindtap="toggleFavorite" wx:if="{{listType !== 'favorite' && listType !== 'mistake'}}">
+      <image src="{{isFavorite ? '/assets/icons/favorite_filled.png' : '/assets/icons/favorite.png'}}"></image>
+      <text>{{isFavorite ? '已收藏' : '收藏'}}</text>
+    </view>
+    
+    <!-- 收藏列表中的取消收藏按钮 -->
+    <view class="action-btn" bindtap="toggleFavorite" wx:if="{{listType === 'favorite'}}">
+      <image src="/assets/icons/favorite_filled.png"></image>
+      <text>取消收藏</text>
+    </view>
+    
+    <!-- 错题列表中的删除错题按钮 -->
+    <view class="action-btn" bindtap="removeMistake" wx:if="{{listType === 'mistake'}}">
+      <image src="/assets/icons/mistake.png"></image>
+      <text>删除错题</text>
+    </view>
+    
+    <!-- 查看答案按钮 - 仅多选题显示，且只有在选择选项后才可点击 -->
+    <view class="action-btn" bindtap="toggleAnswer" wx:if="{{topic.type === 2 && listType !== 'favorite' && listType !== 'mistake'}}">
+      <image src="/assets/icons/answer.png"></image>
+      <text>{{showAnswer ? '隐藏答案' : '查看答案'}}</text>
+    </view>
+  </view>
+</view>

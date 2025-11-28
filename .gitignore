@@ -1,0 +1,55 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+myenv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+mysql_data/
+
+# Backups
+backups/
+*.sql
+*.backup
+*.bak
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Node modules (if any)
+node_modules/
+
+# WeChat miniprogram
+miniprogram_npm/
+
+# Certificates
+*.pem
+*.key
+*.crt

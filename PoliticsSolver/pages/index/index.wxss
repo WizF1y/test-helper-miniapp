@@ -1,0 +1,232 @@
+/* 引入公共样式 */
+@import "/styles/common.wxss";
+
+/* 登录提示区域 */
+.login-prompt {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 40rpx 20rpx;
+  margin-bottom: 20rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.login-icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 20rpx;
+}
+
+.login-text {
+  display: block;
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+
+.login-btn {
+  width: 60%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #3A7FED;
+  color: #fff;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+/* 返回顶部按钮 */
+.back-to-top {
+  position: fixed;
+  right: 30rpx;
+  bottom: 120rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.back-to-top image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 轮播图样式 */
+.banner {
+  width: 100%;
+  height: 320rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 板块标题 */
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  color: #333;
+  position: relative;
+  padding-left: 20rpx;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8rpx;
+  height: 32rpx;
+  width: 8rpx;
+  background-color: #3A7FED;
+  border-radius: 4rpx;
+}
+
+/* 功能入口网格 */
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 33.33%;
+  padding: 20rpx 0;
+}
+
+.grid-item image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 12rpx;
+}
+
+.grid-item text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 月份题库样式 */
+.mode-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10rpx;
+}
+
+.mode-item {
+  width: calc(100% - 20rpx);
+  margin: 10rpx;
+  height: 120rpx;
+  background-color: #f7f9fc;
+  border-radius: 8rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* 月份题库样式 */
+.month-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10rpx;
+}
+
+.month-item {
+  width: calc(33.33% - 20rpx);
+  margin: 10rpx;
+  height: 120rpx;
+  background-color: #f7f9fc;
+  border-radius: 8rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.month-label {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.topic-count {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.update-tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #ff4d4f;
+  color: white;
+  font-size: 20rpx;
+  padding: 4rpx 10rpx;
+  border-radius: 0 8rpx 0 8rpx;
+}
+
+/* 地区题库样式 */
+.region-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.region-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.region-item:last-child {
+  border-bottom: none;
+}
+
+.region-item image {
+  width: 120rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+
+.region-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.region-name {
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 8rpx;
+} 
+
+.progress-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8rpx;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+  text-align: center;
+}

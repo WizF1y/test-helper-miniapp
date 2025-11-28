@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/profile/profile",
+    "pages/topic-list/topic-list",
+    "pages/exam/exam",
+    "pages/mistake-record/mistake-record",
+    "pages/collection/collection",
+    "pages/random-settings/random-settings",
+    "pages/random-practice/random-practice"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3A7FED",
+    "navigationBarTitleText": "教师编时政刷题",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#3A7FED",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/icons/home.png",
+        "selectedIconPath": "assets/icons/home_active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "assets/icons/profile.png",
+        "selectedIconPath": "assets/icons/profile_active.png"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+} 

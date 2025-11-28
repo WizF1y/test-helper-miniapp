@@ -1,0 +1,32 @@
+<!-- pages/random-settings/random-settings.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">随机练习设置</text>
+    <text class="subtitle">选择月份范围和题目数量</text>
+  </view>
+  
+  <view class="month-range">
+    <view class="range-item">
+      <text>起始月份</text>
+      <picker mode="selector" range="{{months}}" value="{{startMonthIndex}}" bindchange="onStartMonthChange">
+        <view class="picker">{{months[startMonthIndex]}}月</view>
+      </picker>
+    </view>
+    
+    <view class="range-item">
+      <text>结束月份</text>
+      <picker mode="selector" range="{{months}}" value="{{endMonthIndex}}" bindchange="onEndMonthChange">
+        <view class="picker">{{months[endMonthIndex]}}月</view>
+      </picker>
+    </view>
+    
+    <view class="range-item">
+      <text>题目数量</text>
+      <picker mode="selector" range="{{[10, 20, 30, 50]}}" value="{{questionCount === 10 ? 0 : questionCount === 20 ? 1 : questionCount === 30 ? 2 : 3}}" bindchange="onQuestionCountChange">
+        <view class="picker">{{questionCount}}题</view>
+      </picker>
+    </view>
+  </view>
+  
+  <button class="start-btn" bindtap="startRandomMode">开始练习</button>
+</view>

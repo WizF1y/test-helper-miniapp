@@ -1,0 +1,16 @@
+<view class="countdown {{isWarning ? 'warning' : ''}}">
+  <view class="countdown-block">
+    <text class="countdown-num">{{hours}}</text>
+    <text class="countdown-label">时</text>
+  </view>
+  <view class="countdown-colon">:</view>
+  <view class="countdown-block">
+    <text class="countdown-num">{{minutes}}</text>
+    <text class="countdown-label">分</text>
+  </view>
+  <view class="countdown-colon">:</view>
+  <view class="countdown-block">
+    <text class="countdown-num">{{seconds}}</text>
+    <text class="countdown-label">秒</text>
+  </view>
+</view> 

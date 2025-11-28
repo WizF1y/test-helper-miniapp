@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  mysql:
+    build: ./mysql
+    container_name: politics_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: .
+    container_name: politics_backend
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      SECRET_KEY: ${SECRET_KEY}
+      WECHAT_APPID: ${WECHAT_APPID}
+      WECHAT_SECRET: ${WECHAT_SECRET}
+      ADMIN_KEY: ${ADMIN_KEY}
+      DEBUG_MODE: ${DEBUG_MODE:-False}
+    ports:
+      - "5000:5000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - app_network
+    volumes:
+      - ./logs:/app/logs
+      - ./questions:/app/questions
+    restart: unless-stopped
+    command: sh /app/start.sh
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  app_network:
+    driver: bridge
