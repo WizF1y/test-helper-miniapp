@@ -4,7 +4,16 @@
  */
 
 const ErrorHandler = require('./error-handler.js');
-const API_BASE_URL = 'http://localhost:8000';
+
+// 环境配置
+const ENV = {
+  development: 'http://localhost:5000',
+  production: 'https://你的域名'  // TODO: 部署时替换为真实域名
+};
+
+// 切换环境：'development' 或 'production'
+const CURRENT_ENV = 'development';
+const API_BASE_URL = ENV[CURRENT_ENV];
 
 /**
  * 获取存储的token

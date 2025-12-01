@@ -37,9 +37,12 @@ mysql_data/
 
 # Backups
 backups/
-*.sql
 *.backup
 *.bak
+
+# SQL files (except init.sql)
+*.sql
+!**/init.sql
 
 # Temporary files
 tmp/
