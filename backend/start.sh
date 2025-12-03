@@ -29,15 +29,18 @@ sleep 5
 # Test database connection
 echo "Testing database connection..."
 python -c "
-from mysql.database import get_db_connection
+import pymysql
+import os
 try:
-    conn = get_db_connection()
-    if conn:
-        print('Database connection successful!')
-        conn.close()
-    else:
-        print('Failed to connect to database')
-        exit(1)
+    conn = pymysql.connect(
+        host=os.environ.get('MYSQL_HOST', 'mysql'),
+        user=os.environ.get('MYSQL_USER', 'root'),
+        password=os.environ.get('MYSQL_PASSWORD', ''),
+        database=os.environ.get('MYSQL_DATABASE', 'sz_exam'),
+        charset='utf8mb4'
+    )
+    print('Database connection successful!')
+    conn.close()
 except Exception as e:
     print(f'Database connection error: {e}')
     exit(1)
@@ -53,24 +56,7 @@ echo "Creating necessary directories..."
 mkdir -p logs
 mkdir -p questions
 
-# Run database migrations (create tables if they don't exist)
-echo "Running database migrations..."
-python -c "
-from app import app
-from mysql.database import get_db_connection
-import os
-
-with app.app_context():
-    try:
-        conn = get_db_connection()
-        if conn:
-            print('Database tables will be created by init.sql')
-            conn.close()
-    except Exception as e:
-        print(f'Migration error: {e}')
-        exit(1)
-"
-
+# Database tables are created by init.sql during MySQL container startup
 echo "Database initialization complete!"
 
 # Start the application
